@@ -1,0 +1,59 @@
+<h1>List of Assetes</h1>
+<section>
+  <div>
+
+    <table class="table table-hover">
+      <div class="card " flo style="text-align: left;">
+        <div class="card-body">
+
+          <form [formGroup]="addAssetForm">
+            <thead>
+              <th>id</th>
+              <th>ASName</th>
+              <th>ASlocation </th>
+              <th>AS life span</th>
+              <th>AS Country of manufacture</th>
+              <th>AS Country of Origin</th>
+              <th>AS contract number</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><label>Add Asset:-</label></td>
+                <td><input #ASName></td>
+                <td><input #ASlocation></td>
+                <td><input #ASlifespan></td>
+                <td><input #ASCountryofmanufacture></td>
+                <td><input #ASCountryofOrigin></td>
+                <td><input #AScontractnumber></td>
+
+                <td><input type="submit" class="form-control btn btn-primary" value="Add Assetes"
+                    (click)="addasset(ASName.value,ASlocation.value,ASlifespan.value,ASCountryofmanufacture.value,ASCountryofOrigin.value,AScontractnumber.value)" />
+                </td>
+              </tr>
+
+              <tr *ngFor="let asset of asset;index as i">
+                <td><input value={{asset._id}} name="assetid" #assetid disabled> </td>
+                <td> <input value={{asset.ASName}} style="width: 150px;" #ASName name="ASName"></td>
+                <td> <input value={{asset.ASlocation}} style="width: 150px;" #ASlocation name="ASlocation"></td>
+                <td> <input value={{asset.ASlifespan}} style="width: 150px;" #ASlifespan name="ASlifespan"></td>
+                <td> <input value={{asset.ASCountryofmanufacture}} style="width: 150px;" #ASCountryofmanufacture
+                    name="ASCountryofmanufacture"></td>
+                <td> <input value={{asset.ASCountryofOrigin}} style="width: 150px;" #ASCountryofOrigin
+                    name="ASCountryofOrigin"></td>
+                <td> <input value={{asset.AScontractnumber}} style="width: 150px;" #AScontractnumber
+                    name="AScontractnumber"></td>
+
+                <td> <a class="btn btn-danger"
+                    (click)="updateasset(assetid.value,ASName.value,ASlocation.value,ASlifespan.value,ASCountryofmanufacture.value,ASCountryofOrigin.value,AScontractnumber.value)">
+                    Edit</a></td>
+                <td> <a class="btn btn-danger" (click)="deleteasset(asset)"> Delete </a>
+              </tr>
+            </tbody>
+          </form>
+        </div>
+      </div>
+    </table>
+
+
+  </div>
+</section>

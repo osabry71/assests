@@ -1,0 +1,48 @@
+<h1>List of Department</h1>
+<section>
+  <div>
+
+    <table class="table table-hover">
+      <div class="card " flo style="text-align: left;">
+        <div class="card-body">
+          <form [formGroup]="editdepForm">
+            <thead>
+              <th>_id</th>
+              <th>Dept name</th>
+              <th>Dept Phone </th>
+              <th>Dept Fax</th>
+              <th>Location</th>
+              <th>Manager</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><label>Add Department:-</label></td>
+                <td><input #depName></td>
+                <td><input #depPhone></td>
+                <td><input #depFax></td>
+                <td><input #deplocation></td>
+                <td><input #depmanager></td>
+                <td><input type="submit" class="form-control btn btn-primary" value="Add Department"
+                    (click)="adddep(depName.value,depPhone.value,depFax.value,deplocation.value,depmanager.value)" />
+                </td>
+              </tr>
+              <tr *ngFor="let dep of dep;index as i">
+                <td> <input value={{dep._id}} #depid disabled> </td>
+                <td> <input value={{dep.depName}} style="width: 150px;" #depname name="depname"></td>
+                <td> <input value={{dep.depPhone}} style="width: 150px;" #depphone name="depphone"></td>
+                <td> <input value={{dep.depFax}} style="width: 150px;" #depfax name="depfax"></td>
+                <td> <input value={{dep.deplocation}} style="width: 150px;" #deplocation name="deplocation"></td>
+                <td> <input value={{dep.depmanager}} style="width: 150px;" #depmanager name="depmanager"></td>
+                <td> <a class="btn btn-danger"
+                    (click)="updatedepartment(depid.value,depname.value,depphone.value,depfax.value,deplocation.value,depmanager.value)">
+                    Edit</a></td>
+                <td> <a class="btn btn-danger" (click)="deletedep(dep)"> Delete </a>
+
+                    </tr>
+            </tbody>
+          </form>
+        </div>
+      </div>
+    </table>
+  </div>
+</section>

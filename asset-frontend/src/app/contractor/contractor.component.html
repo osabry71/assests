@@ -1,0 +1,80 @@
+
+
+
+
+<h1>List of Employee</h1>
+<!--
+<div class="card " style="text-align: left;">
+<div class="card-body">
+<form [formGroup]="addempForm" >
+<label for="Empname">Emp name</label>
+<div><input formControlName="Empname"           id="Empname"          #Empname type="text"class="form-control" required  ><div *ngIf="addempForm.controls['Empname'].invalid &&(addempForm.controls['Empname'].dirty ||addempForm.controls['Empname'].touched)"class ="alert alert-info">Name is required .</div></div>
+                                                                          <label for="email">Email:</label>
+<div><input formControlName="Email"             id="Email"            #Email type="Email"class="form-control" required ><div *ngIf="addempForm.controls['Email'].invalid &&(addempForm.controls['Email'].dirty ||addempForm.controls['Email'].touched)"class ="alert alert-info">Email is required .</div></div>
+                                                                             <label for="Degre"> Degre </label>
+ <div><input formControlName="Degre"             id="Degre"            #Degre type="text"class="form-control" ><div *ngIf="addempForm.controls['Degre'].invalid &&(addempForm.controls['Degre'].dirty ||addempForm.controls['Degre'].touched)"class ="alert alert-info">Degre is required .</div></div>
+                                                                                    <label for="dateofbeinghired"> date of being hired </label>
+ <div><input formControlName="dateofbeinghired"  id="dateofbeinghired" #dateofbeinghired  type="date"  class="form-control"   placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31"><div *ngIf="addempForm.controls['dateofbeinghired'].invalid &&(addempForm.controls['dateofbeinghired'].dirty ||addempForm.controls['dateofbeinghired'].touched)"class ="alert alert-info">hiring date is required .</div></div>
+
+                                                                                      <label for="name">Department</label>
+<div><input formControlName="department"        id="department"       #department type="text"class="form-control" required  ><div *ngIf="addempForm.controls['department'].invalid &&(addempForm.controls['department'].dirty ||addempForm.controls['department'].touched)"class ="alert alert-info">department is required .</div></div>
+
+                                                                                         <label for="Gender">Gender: </label> &nbsp;&nbsp;
+                                                                                        <label for="Gender">Male: </label> &nbsp; &nbsp;
+<input formControlName="gender"             #gender  type="radio" name="gender" value="M" checked   />  &nbsp;&nbsp;
+                                                                                       <label for="Gender">female: </label> &nbsp;&nbsp;
+<input formControlName="gender"             #gender type="radio" name="gender" value="F" />
+
+
+<div class="form-group"><input type="submit"   [disabled] ="addempForm.pristine || addempForm.invalid" class="form-control btn btn-primary" value="Add Employee"
+  (click)="addemp(Empname.value,Email.value,Degre.value,dateofbeinghired.value,gender.value,department.value)"/>
+  </div>div><span class="alert-danger"> {{msg.value}}</span>
+
+                    </form>
+                </div>
+                </div>
+-->
+<section>
+<div>
+
+<table class="table table-hover">
+  <div class="card " flo style="text-align: left;">
+     <div class="card-body">
+       <form [formGroup]="eidtempForm">
+            <thead><th>_id</th> <th>Emp_name</th> <th>Email </th> <th>Degre</th><th>doP</th> <th>gender</th> <th>department</th></thead>
+                <tbody>
+                  <tr>
+ <td><label>Add Employee:-</label></td>
+ <td><input #addEmpname ></td>
+ <td><input #addEmail></td>
+ <td><input #addDegre></td>
+ <td><input #adddateofbeinghired></td>
+ <td><input #addgender></td>
+ <td><input #adddepartment></td>
+
+ <td><input type="submit"  class="form-control btn btn-primary" value="Add Employee"
+  (click)="addemp(addEmpname.value,addEmail.value,addDegre.value,adddateofbeinghired.value,addgender.value,adddepartment.value)"/>
+                  </td>
+                  </tr>
+
+                  <tr *ngFor="let emp of emp;index as i" >
+                              <td><input value={{emp._id}}    #empid disabled  >            </td>
+                              <td> <input   value={{emp.Empname}}          style="width: 150px;" #Empname name="Empname" ></td>
+                              <td> <input   value={{emp.Email}}            style="width: 150px;" #Email name="Email"  ></td>
+                              <td> <input   value={{emp.Degre}}            style="width: 150px;" #Degre name="Degre" ></td>
+                              <td> <input   value={{emp.dateofbeinghired}} style="width: 150px;" #dateofbeinghired name="dateofbeinghired" ></td>
+                              <td> <input   value={{emp.gender}}           style="width: 150px;" #gender name="gender"           ></td>
+                              <td> <input   value={{emp.department}}       style="width: 150px;" #department name="department"       ></td>
+                              <td> <a    class="btn btn-danger" (click)="updateemp(empid.value,Empname.value,Email.value,Degre.value,dateofbeinghired.value,gender.value,department.value)"  > Edit</a></td>
+                              <td> <a    class="btn btn-danger"      (click)="deleteemp(emp)" > Delete </a>
+
+ </tr>
+                </tbody>
+         </form>
+     </div>
+    </div>
+ </table>
+
+
+</div>
+</section>

@@ -1,0 +1,49 @@
+<p>signup works!</p>
+<h1>signup page</h1>
+
+<div class="card ">
+<div class="card-body">
+<form [formGroup]="signUpForm" >   
+ <div class="form-group"><label for="name">Name:</label>
+                     <input type="text"class="form-control" required id="name" formControlName="name" #name >
+                     <div *ngIf="signUpForm.controls['name'].invalid &&(signUpForm.controls['name'].dirty ||signUpForm.controls['name'].touched)"class ="alert alert-info">Name is required .</div></div>
+ <div class="form-group"><label for="email">Email:</label> 
+                    <input type="email"class="form-control" required id="email" formControlName="email" #email> 
+                    <div *ngIf="signUpForm.controls['email'].invalid &&(signUpForm.controls['email'].dirty ||signUpForm.controls['email'].touched)" class ="alert alert-info">
+                        <span *ngIf="signUpForm.controls['email'].errors.required">E-mail is required</span>
+                        <span *ngIf="signUpForm.controls['email'].errors.email">please enter a valid email</span>
+                    </div></div>
+<div class="form-group"><label for="username">UserName:</label> 
+ <input type="text"class="form-control" required id="username" formControlName="username" #username > 
+                    <div *ngIf="signUpForm.controls['username'].invalid &&(signUpForm.controls['username'].dirty ||signUpForm.controls['username'].touched)" class ="alert alert-info">usernsme is required .</div></div>
+
+
+<div class="form-group"><label for="Password">Password:</label> 
+<input type="password" class="form-control" required id="password" formControlName="password" #password >
+<div  *ngIf="signUpForm.controls['password'].invalid &&(signUpForm.controls['password'].dirty ||signUpForm.controls['password'].touched)" 
+class ="alert alert-info">
+     <span *ngIf="signUpForm.controls['password'].errors.required">password is required</span>
+     <span *ngIf="signUpForm.controls['password'].errors.minlength">password must be at least 5 charachters long</span>
+     <span *ngIf="signUpForm.controls['password'].errors.pattern">password must contain characters and numbers</span>
+</div></div>
+
+<div class="form-group"><label for="confirm Password">Confirm Password: </label> 
+<input type="password" class="form-control" required id="confpassword"  formControlName="confpassword" #confpassword 
+  pattern="({{password.value}})">
+<div *ngIf="signUpForm.controls['confpassword'].invalid &&(signUpForm.controls['confpassword'].dirty ||signUpForm.controls['confpassword'].touched)"
+   class ="alert alert-info">
+     <span *ngIf="signUpForm.controls['confpassword'].errors?.required">confirm password is required</span>   
+     <span *ngIf="signUpForm.controls['confpassword'].errors?.pattern">
+         passwords doesnot match</span> </div> </div>
+  
+     <div class="form-group"><label for="Phone"> Phone: </label> <input type="text"class="form-control"id="Phone" formControlName="phone" #phone ></div>
+                <div class="form-group"> <label for="Gender">Gender: </label>  
+                                                                               <input type="radio" name="gender" value="M" checked  formControlName="gender" #gender /> <label for="Gender">Male: </label> &nbsp; &nbsp;
+                                                                               <input type="radio" name="gender" value="F"          formControlName="gender" #gender/> <label for="Gender">female: </label></div>
+                 <div class="form-group"> <input type="submit"  [disabled] ="signUpForm.pristine || signUpForm.invalid"
+                    class="form-control btn btn-primary" value="Register" 
+                     (click)="addUser(name.value,username.value,email.value,password.value,phone.value,gender.value)"/> </div>
+                <span class="alert-danger"> {{msg.value}}</span>
+                    </form>
+                </div>
+                </div>

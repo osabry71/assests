@@ -1,0 +1,55 @@
+
+<table class="table table-hover">
+  <div class="card " flo style="text-align: left;">
+     <div class="card-body">
+<form [formGroup]="eidtempForm">
+
+  <tr >
+    <td colspan="6"><label></label></td>
+    <td colspan="6"><label>Complainer</label></td>
+    <td colspan="6"> <select #empid (change)="empcode(empid.value)" class="select-chosen">
+       <option *ngFor="let emp of emp" value="{{emp._id}}"> {{emp.Empname}} </option> </select>
+     </td>
+      <td colspan="6"><label>Complainer</label></td>
+      <td colspan="6"> <select #empid (change)="empcode(empid.value)" class="select-chosen">
+         <option *ngFor="let emp of emp" value="{{emp._id}}"> {{emp.Empname}} </option> </select>
+       </td>
+      </tr>
+      <tr >
+        <td colspan="6"><label></label></td>
+        <td colspan="6"><label>Complainer</label></td>
+        <td colspan="6"> <select #empid (change)="empcode(empid.value)" class="select-chosen">
+           <option *ngFor="let emp of emp" value="{{emp._id}}"> {{emp.Empname}} </option> </select>
+         </td>
+
+          <td colspan="6"><label>defect</label></td>
+          <td colspan="6"> <select #empid (change)="empcode(empid.value)" id="select-chosen" name="select-chosen" class="select-chosen">
+             <option *ngFor="let emp of emp" value="{{emp._id}}"> {{emp.Empname}} </option> </select>
+           </td>
+          </tr>
+
+<tr><td colspan="6"><label>Defict</label></td>
+    <td colspan="6"><label>Descraption</label></td>
+    <td colspan="6"><label>Assign TO</label></td>
+    <td rowspan="2"><button style="width:100px; height: 100px;">New Defict</button></td>
+</tr>
+<tr >
+  <td colspan="6"> <select #empid (change)="empcode(empid.value)" class="select-chosen">
+     <option *ngFor="let emp of emp" value="{{emp._id}}"> {{emp.Empname}} </option> </select>
+   </td>
+<td><input type="text" #discraption></td>
+    <td colspan="6"> <select #empid (change)="empcode(empid.value)" class="select-chosen">
+       <option *ngFor="let emp of emp" value="{{emp._id}}"> {{emp.Empname}} </option> </select>
+     </td>
+    </tr>
+<
+
+ <input type="submit"  class="form-control btn btn-primary" value="Add Employee"/>
+</form>
+     </div>
+  </div>
+</table>
+
+
+
+

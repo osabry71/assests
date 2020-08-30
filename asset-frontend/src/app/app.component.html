@@ -1,0 +1,76 @@
+
+
+<nav class="manubar">
+  <div class="container-fluid">
+    <div id="usernavigation"  *ngIf="!isadmin;else adminnavigation ">
+      <ul >
+<div  id ="unauth" class="navbar-nav"  *ngIf="userauthenticated==null;else auth"   >
+          <form [formGroup]="loginForm" ><div class="form-group">
+                <li><label for="username">User Name:</label></li><li><input type="text" required id="username" formControlName="username" #username ></li>
+                    <div *ngIf="loginForm.controls['username'].invalid &&(loginForm.controls['username'].dirty ||loginForm.controls['username'].touched)" class ="alert alert-info">usernsme is required . </div>
+                <li><label for="Password">Password:</label></li><li><input type="password"  required id="password" formControlName="password" #password ></li>
+                    <div *ngIf="loginForm.controls['password'].invalid&&(loginForm.controls['password'].dirty||loginForm.controls['password'].touched)"class ="alert alert-info">
+                          <span *ngIf="loginForm.controls['password'].errors.required">password is required</span><span *ngIf="loginForm.controls['password'].errors.minlength">password must be at least 5 charachters long</span><span *ngIf="loginForm.controls['password'].errors.pattern">password must contain characters and numbers</span></div>
+                <li><input type="submit"  [disabled] ="loginForm.pristine || loginForm.invalid"value="Signin"(click)="login(username.value,password.value)"/></li></div>
+                        <span class="alert-danger"> {{msg.value}}</span>
+          </form></div>
+
+
+
+
+
+
+<ng-template #auth >
+  <div id="ccp"  *ngIf="userrole=='ccp';complain">
+    <li ><a  routerLink="complain">Home</a> </li>
+    <li ><a  routerLink="complain/newcomplain">Add Complain</a> </li>
+    <li ><a  routerLink="complain/allcomplain">All Complain</a> </li>
+  </div>
+
+  <div id="Tura Warehouse"  *ngIf="userrole=='Tura Warehouse';">
+    <li ><a  routerLink="employee">Employee</a> </li>
+    <li ><a  routerLink="department">Department</a></li>
+  </div>
+  <li><input type="submit"   value="logout"  (click)="logout()"/></li>
+</ng-template>
+
+</ul> </div>
+</div>
+
+<ng-template id="adminnavigation " #adminnavigation>
+  <ul ><li><a routerLink="/"  routerLinkActive ="active">Master Data Lists</a>
+           <ul>
+            <li ><a  routerLink="admin/listusers">users</a> </li>
+            <li ><a  routerLink="admin/signup" >Add Users</a> </li>
+            <li ><a  routerLink="employee">Employee</a> </li>
+            <li ><a  routerLink="department">Department</a></li>
+            <li ><a  routerLink="asset">Asset</a> </li>
+            <li ><a  routerLink="defect">Defect</a></li>
+            <li ><a  routerLink="contractor">Contractor</a> </li>
+            <li ><a  routerLink="supplier">Supplier</a></li>
+            <li ><a  routerLink="spareparts">spare parts</a> </li>
+            <li ><a  routerLink="warehouse">warehouse</a></li>
+         </ul>
+      </li>
+      <li><input type="submit"   value="logout"  (click)="logout()"/></li>
+</ul>
+</ng-template>
+</nav>
+
+
+<router-outlet></router-outlet>
+<ng-template id="complain" #complain>
+  <h1>ccp</h1>
+  <label>hhhhhhhhhhhhhhhhhhhhhhhhhhhhh</label>
+ </ng-template>
+
+<div  *ngIf="userauthenticated==null;" >
+  <img  id="badyimage" src="../assets/image/metro.jpg"  alt="image" width="1200px"  >
+
+</div>
+
+
+<div class="container">
+
+</div>
+
